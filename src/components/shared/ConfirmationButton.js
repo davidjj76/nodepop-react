@@ -1,5 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
+import Button from './Button';
 
 function ConfirmationButton({ confirmation, onConfirm, ...props }) {
   const [confirmationVisible, setConfirmationVisible] = React.useState(false);
@@ -18,10 +19,16 @@ function ConfirmationButton({ confirmation, onConfirm, ...props }) {
     <>
       <button onClick={handleClick} {...props} />
       {confirmationVisible && (
-        <div>
-          {confirmation}
-          <button onClick={handleConfirmClick}>Ok</button>
-          <button onClick={handleCancelClick}>Cancel</button>
+        <div className="absolute w-screen h-screen top-0 left-0 bg-gray-400 z-50 opacity-75 flex flex-col justify-center items-center">
+          <div className="border-gray-600 border-solid border-1 rounded max-w-screen-md bg-white p-4">
+            <p>{confirmation}</p>
+            <div className="flex justify-end">
+              <Button onClick={handleConfirmClick}>Ok</Button>
+              <Button className="ml-4" onClick={handleCancelClick}>
+                Cancel
+              </Button>
+            </div>
+          </div>
         </div>
       )}
     </>
