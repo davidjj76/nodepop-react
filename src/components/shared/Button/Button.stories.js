@@ -11,36 +11,31 @@ const Template = args => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'Primary',
+  children: 'Button',
   size: Button.sizes.base,
   variant: Button.variants.primary,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  children: 'Secondary',
-  size: Button.sizes.base,
+  ...Primary.args,
   variant: Button.variants.secondary,
 };
 
 export const Large = Template.bind({});
 Large.args = {
-  children: 'Large',
+  ...Primary.args,
   size: Button.sizes.lg,
-  variant: Button.variants.primary,
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  children: 'Small',
+  ...Primary.args,
   size: Button.sizes.sm,
-  variant: Button.variants.primary,
 };
 
 export const Full = Template.bind({});
 Full.args = {
-  children: 'Full',
-  size: Button.sizes.xl,
-  variant: Button.variants.warning,
+  ...Primary.args,
   full: true,
 };

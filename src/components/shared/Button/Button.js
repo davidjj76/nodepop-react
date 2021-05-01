@@ -70,15 +70,15 @@ Button.variants = VARIANTS;
 
 Button.propTypes = {
   className: T.string,
-  full: T.bool,
   size: T.oneOf(Object.values(SIZES)),
   variant: T.oneOf(Object.values(VARIANTS)),
+  full: T.bool,
 };
 
 Button.defaultProps = {
-  full: false,
   size: SIZES.base,
   variant: VARIANTS.primary,
+  full: false,
 };
 
 export default Button;

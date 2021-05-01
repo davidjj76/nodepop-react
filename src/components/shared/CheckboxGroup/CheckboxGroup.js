@@ -1,7 +1,6 @@
 import T from 'prop-types';
-import classnames from 'classnames';
 
-import Checkbox from './Checkbox';
+import { Checkbox } from '../InputChecked';
 
 function CheckboxGroup({
   className,
@@ -24,15 +23,15 @@ function CheckboxGroup({
   };
 
   return (
-    <div className="flex items-center justify-between cursor-pointer">
+    <div className={className}>
       <h5 className="text-sm font-bold">{label}</h5>
-      {options.map(option => {
-        const checked = value.includes(option);
+      {Object.entries(options).map(([key, optionLabel]) => {
+        const checked = value.includes(key);
         return (
           <Checkbox
-            key={option}
-            value={option}
-            label={option}
+            key={key}
+            value={key}
+            label={optionLabel}
             checked={checked}
             onChange={handleChange}
             {...props}
@@ -46,7 +45,7 @@ function CheckboxGroup({
 CheckboxGroup.propTypes = {
   className: T.string,
   label: T.string,
-  options: T.arrayOf(T.string.isRequired).isRequired,
+  options: T.object.isRequired,
   value: T.arrayOf(T.string.isRequired).isRequired,
   onChange: T.func.isRequired,
 };
