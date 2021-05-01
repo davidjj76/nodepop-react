@@ -5,7 +5,6 @@ import Button from './Button';
 export default {
   title: 'Button',
   component: Button,
-  argTypes: { onClick: { action: 'clicked' } },
 };
 
 const Template = args => <Button {...args} />;
@@ -36,4 +35,12 @@ Small.args = {
   children: 'Small',
   size: Button.sizes.sm,
   variant: Button.variants.primary,
+};
+
+export const Full = Template.bind({});
+Full.args = {
+  children: 'Full',
+  size: Button.sizes.xl,
+  variant: Button.variants.warning,
+  full: true,
 };
