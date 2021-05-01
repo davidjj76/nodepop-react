@@ -21,7 +21,7 @@ function AdvertDetail({ name, sale, price, tags, photo, onDelete }) {
       />
       <ConfirmationButton
         variant={Button.variants.danger}
-        confirmation="Are you sure?"
+        confirmation="Are you sure you want to delete this advert?"
         onConfirm={onDelete}
       >
         Delete

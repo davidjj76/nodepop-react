@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { Button, ConfirmationButton } from '../../shared';
+import { ConfirmationButton } from '../../shared';
 import { useAuthContext } from '../context';
 import { logout } from '../../../api/auth';
 
@@ -14,8 +14,7 @@ const AuthButton = () => {
 
   return isLogged ? (
     <ConfirmationButton
-      variant={Button.variants.secondary}
-      confirmation="Are you sure?"
+      confirmation="Are you sure you want to logout?"
       onConfirm={handleLogoutConfirm}
     >
       Logout
