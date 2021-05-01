@@ -24,7 +24,7 @@ function CheckboxGroup({
 
   return (
     <div className={className}>
-      <h5 className="text-sm font-bold">{label}</h5>
+      <h5 className="text-sm text-gray-600">{label}</h5>
       {options.map(({ value: optionValue, label: optionLabel }) => (
         <Checkbox
           key={optionValue}

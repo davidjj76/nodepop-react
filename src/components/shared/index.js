@@ -1,4 +1,5 @@
 export { default as Button } from './Button';
+export { default as InputText } from './InputText';
 export { Checkbox } from './InputChecked';
 export { default as CheckboxGroup } from './CheckboxGroup';
 export { default as RadioGroup } from './RadioGroup';

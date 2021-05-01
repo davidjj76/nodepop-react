@@ -1,7 +1,7 @@
 import T from 'prop-types';
 
 import useForm from '../../../hooks/useForm';
-import { Button, Checkbox } from '../../shared';
+import { Button, Checkbox, InputText } from '../../shared';
 
 const validEmail = ({ email }) => email;
 const validPassword = ({ password }) => password;
@@ -21,10 +21,16 @@ function LoginForm({ onSubmit }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input name="email" value={email} onChange={handleChange} />
-      <input
+      <InputText
+        name="email"
+        placeholder="Your email address"
+        value={email}
+        onChange={handleChange}
+      />
+      <InputText
         type="password"
         name="password"
+        placeholder="Your password"
         value={password}
         onChange={handleChange}
       />

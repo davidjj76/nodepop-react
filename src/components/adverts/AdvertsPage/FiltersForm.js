@@ -2,7 +2,7 @@ import T from 'prop-types';
 
 import useForm from '../../../hooks/useForm';
 import SelectTags from '../SelectTags';
-import { Button, RadioGroup, SelectRange } from '../../shared';
+import { Button, InputText, RadioGroup, SelectRange } from '../../shared';
 import { advert } from '../propTypes';
 import { saleFilter } from './filters';
 
@@ -26,7 +26,13 @@ function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
   return (
     <form onSubmit={handleSubmit(onFilter)}>
       <p>Filters</p>
-      <input name="name" value={name} onChange={handleChange} />
+      <InputText
+        name="name"
+        label="Name"
+        placeholder="Search by name"
+        value={name}
+        onChange={handleChange}
+      />
       <RadioGroup
         options={Object.values(saleFilter)}
         label="Sell or Buy"

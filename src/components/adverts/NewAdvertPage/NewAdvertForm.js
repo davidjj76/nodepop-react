@@ -1,7 +1,7 @@
 import T from 'prop-types';
 
 import useForm from '../../../hooks/useForm';
-import { Button, InputFile, RadioGroup } from '../../shared';
+import { Button, InputFile, InputText, RadioGroup } from '../../shared';
 import { saleFilter } from '../AdvertsPage/filters';
 import SelectTags from '../SelectTags';
 
@@ -29,7 +29,13 @@ function NewAdvertForm({ onSubmit }) {
 
   return (
     <form onSubmit={handleSubmit(handleSubmitForm)}>
-      <input name="name" value={name} onChange={handleChange} />
+      <InputText
+        name="name"
+        label="Name"
+        placeholder="Advert name"
+        value={name}
+        onChange={handleChange}
+      />
       <RadioGroup
         label="Sell or Buy"
         options={Object.values(saleFilter).filter(
@@ -39,7 +45,14 @@ function NewAdvertForm({ onSubmit }) {
         value={sale}
         onChange={handleChange}
       />
-      <input type="number" name="price" value={price} onChange={handleChange} />
+      <InputText
+        type={InputText.types.number}
+        name="price"
+        label="Price"
+        placeholder="Advert price"
+        value={name}
+        onChange={handleChange}
+      />
       <SelectTags multiple name="tags" value={tags} onChange={handleChange} />
       <InputFile name="photo" onChange={handleChange} />
       <Button disabled={!validate(validName, validPrice, validTags)}>

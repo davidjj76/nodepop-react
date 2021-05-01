@@ -17,7 +17,7 @@ const typeClassName = {
 function InputChecked({ className, type, label, ...props }) {
   return (
     <div className={classnames('my-6', className)}>
-      <div className="w-full flex items-center">
+      <div className="flex items-center">
         <input
           type={type}
           className={classnames(inputClassName, typeClassName[type], {})}
