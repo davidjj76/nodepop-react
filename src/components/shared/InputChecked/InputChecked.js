@@ -2,7 +2,7 @@ import T from 'prop-types';
 import classnames from 'classnames';
 
 const inputClassName =
-  'appearance-none w-6 h-6 border border-gray-300 outline-none cursor-pointer';
+  'appearance-none w-6 h-6 border border-gray-300 outline-none cursor-pointer checked:bg-blue-400';
 
 const TYPES = {
   checkbox: 'checkbox',
@@ -14,16 +14,13 @@ const typeClassName = {
   [TYPES.radio]: 'rounded-full',
 };
 
-function InputChecked({ className, type, checked, label, ...props }) {
+function InputChecked({ className, type, label, ...props }) {
   return (
     <div className={classnames('my-6', className)}>
       <div className="w-full flex items-center">
         <input
           type={type}
-          className={classnames(inputClassName, typeClassName[type], {
-            'bg-blue-400': checked,
-          })}
-          checked={checked}
+          className={classnames(inputClassName, typeClassName[type], {})}
           {...props}
         />
         <label className="ml-2 text-sm">{label}</label>
@@ -37,13 +34,11 @@ InputChecked.types = TYPES;
 InputChecked.propTypes = {
   className: T.string,
   type: T.oneOf(Object.values(TYPES)),
-  checked: T.bool,
   label: T.string,
 };
 
 InputChecked.defaultProps = {
   type: TYPES.checkbox,
-  checked: false,
 };
 
 export const Checkbox = props => (

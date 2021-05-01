@@ -1,6 +1,7 @@
 import T from 'prop-types';
 
 import useForm from '../../../hooks/useForm';
+import { Button, Checkbox } from '../../shared';
 
 const validEmail = ({ email }) => email;
 const validPassword = ({ password }) => password;
@@ -27,13 +28,13 @@ function LoginForm({ onSubmit }) {
         value={password}
         onChange={handleChange}
       />
-      <input
-        type="checkbox"
+      <Checkbox
+        label="Remember"
         name="remember"
         checked={remember}
         onChange={handleChange}
       />
-      <button disabled={!validate(validEmail, validPassword)}>Login</button>
+      <Button disabled={!validate(validEmail, validPassword)}>Login</Button>
     </form>
   );
 }

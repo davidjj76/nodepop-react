@@ -14,11 +14,11 @@ export const Tags = Template.bind({});
 Tags.args = {
   label: 'Tags',
   name: 'tags',
-  options: {
-    mobile: 'Mobile',
-    motor: 'Motor',
-    lifestyle: 'Lifestyle',
-    work: 'Work',
-  },
+  options: [
+    { value: 'lifestyle', label: 'Lifestyle' },
+    { value: 'mobile', label: 'Mobile' },
+    { value: 'motor', label: 'Motor' },
+    { value: 'work', label: 'Work' },
+  ],
   value: ['mobile', 'motor'],
 };

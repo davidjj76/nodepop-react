@@ -6,18 +6,15 @@ function RadioGroup({ className, label, options, value, ...props }) {
   return (
     <div className={className}>
       <h5 className="text-sm font-bold">{label}</h5>
-      {Object.entries(options).map(([key, label]) => {
-        const checked = value === key;
-        return (
-          <Radio
-            key={key}
-            value={key}
-            label={label}
-            checked={checked}
-            {...props}
-          />
-        );
-      })}
+      {options.map(({ value: optionValue, label: optionLabel }) => (
+        <Radio
+          key={optionValue}
+          value={optionValue}
+          label={optionLabel}
+          checked={value === optionValue}
+          {...props}
+        />
+      ))}
     </div>
   );
 }
@@ -25,7 +22,12 @@ function RadioGroup({ className, label, options, value, ...props }) {
 RadioGroup.propTypes = {
   className: T.string,
   label: T.string,
-  options: T.object.isRequired,
+  options: T.arrayOf(
+    T.shape({
+      value: T.string.isRequired,
+      label: T.string.isRequired,
+    })
+  ).isRequired,
   value: T.string.isRequired,
 };
 

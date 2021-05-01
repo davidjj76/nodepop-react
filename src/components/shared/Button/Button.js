@@ -20,7 +20,7 @@ const VARIANTS = {
 };
 
 const commonClassName =
-  'rounded-sm font-medium border border-solid text-center focus:outline-none';
+  'rounded-sm font-medium border border-solid text-center focus:outline-none disabled:opacity-50 disabled:pointer-events-none';
 
 const sizeClassName = {
   [SIZES.xs]: 'py-1 px-2',

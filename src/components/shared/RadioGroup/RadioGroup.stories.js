@@ -10,10 +10,14 @@ export default {
 
 const Template = args => <RadioGroup {...args} />;
 
-export const Sale = Template.bind({});
-Sale.args = {
-  label: 'Sale',
+export const SaleOrBuy = Template.bind({});
+SaleOrBuy.args = {
+  label: 'Sell or Buy',
   name: 'sale',
-  options: { sell: 'Sell', buy: 'Buy', all: 'All' },
+  options: [
+    { value: 'sell', label: 'Sell' },
+    { value: 'buy', label: 'Buy' },
+    { value: 'all', label: 'All' },
+  ],
   value: 'sell',
 };

@@ -25,19 +25,16 @@ function CheckboxGroup({
   return (
     <div className={className}>
       <h5 className="text-sm font-bold">{label}</h5>
-      {Object.entries(options).map(([key, optionLabel]) => {
-        const checked = value.includes(key);
-        return (
-          <Checkbox
-            key={key}
-            value={key}
-            label={optionLabel}
-            checked={checked}
-            onChange={handleChange}
-            {...props}
-          />
-        );
-      })}
+      {options.map(({ value: optionValue, label: optionLabel }) => (
+        <Checkbox
+          key={optionValue}
+          value={optionValue}
+          label={optionLabel}
+          checked={value.includes(optionValue)}
+          onChange={handleChange}
+          {...props}
+        />
+      ))}
     </div>
   );
 }
@@ -45,7 +42,12 @@ function CheckboxGroup({
 CheckboxGroup.propTypes = {
   className: T.string,
   label: T.string,
-  options: T.object.isRequired,
+  options: T.arrayOf(
+    T.shape({
+      value: T.string.isRequired,
+      label: T.string.isRequired,
+    })
+  ).isRequired,
   value: T.arrayOf(T.string.isRequired).isRequired,
   onChange: T.func.isRequired,
 };

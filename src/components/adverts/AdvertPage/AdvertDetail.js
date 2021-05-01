@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 
-import { ConfirmationButton } from '../../shared';
+import { Button, ConfirmationButton } from '../../shared';
 import placeholder from '../../../assets/images/placeholder.png';
 import { advert } from '../propTypes';
 
@@ -19,7 +19,11 @@ function AdvertDetail({ name, sale, price, tags, photo, onDelete }) {
         height="200"
         style={{ objectFit: 'contain' }}
       />
-      <ConfirmationButton confirmation="Are you sure?" onConfirm={onDelete}>
+      <ConfirmationButton
+        variant={Button.variants.danger}
+        confirmation="Are you sure?"
+        onConfirm={onDelete}
+      >
         Delete
       </ConfirmationButton>
     </div>

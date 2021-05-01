@@ -5,7 +5,9 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    backgroundColor: ['hover', 'checked'],
+    opacity: ['disabled'],
+    pointerEvents: ['disabled'],
   },
   plugins: [],
 };

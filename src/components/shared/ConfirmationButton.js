@@ -17,15 +17,23 @@ function ConfirmationButton({ confirmation, onConfirm, ...props }) {
 
   return (
     <>
-      <button onClick={handleClick} {...props} />
+      <Button onClick={handleClick} {...props} />
       {confirmationVisible && (
         <div className="absolute w-screen h-screen top-0 left-0 bg-gray-400 z-50 opacity-75 flex flex-col justify-center items-center">
           <div className="border-gray-600 border-solid border-1 rounded max-w-screen-md bg-white p-4">
             <p>{confirmation}</p>
             <div className="flex justify-end">
-              <Button onClick={handleConfirmClick}>Ok</Button>
-              <Button className="ml-4" onClick={handleCancelClick}>
+              <Button
+                variant={Button.variants.secondary}
+                onClick={handleCancelClick}
+              >
                 Cancel
+              </Button>
+              <Button
+                variant={Button.variants.warning}
+                onClick={handleConfirmClick}
+              >
+                Ok
               </Button>
             </div>
           </div>
