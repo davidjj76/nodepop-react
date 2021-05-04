@@ -1,5 +1,5 @@
 import T from 'prop-types';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 const SIZES = {
   xs: 'xs',
@@ -50,7 +50,7 @@ const variantClassName = {
 function Button({ className, full, size, variant, ...props }) {
   return (
     <button
-      className={classnames(
+      className={classNames(
         commonClassName,
         `text-${size}`,
         sizeClassName[size],

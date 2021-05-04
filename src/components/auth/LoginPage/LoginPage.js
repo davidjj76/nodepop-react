@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 
 import { useAuthContext } from '../context';
 import usePromise from '../../../hooks/usePromise';
@@ -22,8 +22,19 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <LoginForm onSubmit={handleSubmit} />
+    <div className="w-5/6 sm:w-2/3 md:w-1/2 my-12 py-6 px-6 shadow mx-auto rounded-sm">
+      <div className="w-full mx-auto text-center">
+        <h2 className="text-3xl font-bold text-gray-800">Welcome back</h2>
+        <p className="mt-3 text-gray-800">
+          New to Nodepop?{' '}
+          <Link to="/signup" className="text-blue-400">
+            Sign up
+          </Link>
+        </p>
+      </div>
+      <div className="mt-12">
+        <LoginForm onSubmit={handleSubmit} />
+      </div>
       {isLoading && <p>...login in nodepop</p>}
       {error && (
         <div onClick={resetError} style={{ color: 'red' }}>

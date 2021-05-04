@@ -4,7 +4,7 @@ import { ConfirmationButton } from '../../shared';
 import { useAuthContext } from '../context';
 import { logout } from '../../../api/auth';
 
-const AuthButton = () => {
+const AuthButton = props => {
   const { isLogged, handleLogout } = useAuthContext();
 
   const handleLogoutConfirm = async () => {
@@ -16,6 +16,7 @@ const AuthButton = () => {
     <ConfirmationButton
       confirmation="Are you sure you want to logout?"
       onConfirm={handleLogoutConfirm}
+      {...props}
     >
       Logout
     </ConfirmationButton>

@@ -1,37 +1,28 @@
-import { NavLink } from 'react-router-dom';
+import T from 'prop-types';
+import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+
 import { AuthButton } from '../auth';
+import { Button } from '../shared';
 
-const isExact = match => match && match.isExact;
-
-function Header() {
+const headerClassName =
+  'flex items-center justify-between p-6 border-b border-gray-300 bg-white';
+function Header({ className }) {
   return (
-    <header>
-      Nodepop React
-      <nav>
-        <ul>
-          <li>
-            <NavLink
-              to="/adverts"
-              activeClassName="selected"
-              isActive={isExact}
-            >
-              Nodepop
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/adverts/new"
-              activeClassName="selected"
-              isActive={isExact}
-            >
-              New advert
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-      <AuthButton />
+    <header className={classNames(headerClassName, className)}>
+      <Link to="/adverts">Nodepop</Link>
+      <div>
+        <Link to="/adverts/new">
+          <Button>New advert</Button>
+        </Link>
+        <AuthButton className="ml-6" />
+      </div>
     </header>
   );
 }
+
+Header.propTypes = {
+  className: T.string,
+};
 
 export default Header;

@@ -34,13 +34,18 @@ function LoginForm({ onSubmit }) {
         value={password}
         onChange={handleChange}
       />
-      <Checkbox
-        label="Remember"
-        name="remember"
-        checked={remember}
-        onChange={handleChange}
-      />
-      <Button disabled={!validate(validEmail, validPassword)}>Login</Button>
+      <Button full disabled={!validate(validEmail, validPassword)}>
+        Login
+      </Button>
+      <div className="mt-6 border-t border-b border-gray-300">
+        <Checkbox
+          className="font-semibold"
+          label="Remember this device"
+          name="remember"
+          checked={remember}
+          onChange={handleChange}
+        />
+      </div>
     </form>
   );
 }

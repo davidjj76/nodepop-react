@@ -35,19 +35,21 @@ function AdvertsPage() {
 
   return (
     <Layout>
-      {adverts.length > 0 && (
-        <FiltersForm
-          initialFilters={filters}
-          defaultFilters={defaultFilters}
-          prices={adverts.map(({ price }) => price)}
-          onFilter={setFilters}
-        />
-      )}
-      {filteredAdverts.length ? (
-        <AdvertsList adverts={filteredAdverts} />
-      ) : (
-        <EmptyList advertsCount={adverts.length} />
-      )}
+      <div className="flex">
+        <div className="static top-24 w-1/4 border-r border-gray-300">
+          <FiltersForm
+            initialFilters={filters}
+            defaultFilters={defaultFilters}
+            prices={adverts.map(({ price }) => price)}
+            onFilter={setFilters}
+          />
+        </div>
+        {filteredAdverts.length ? (
+          <AdvertsList adverts={filteredAdverts} />
+        ) : (
+          <EmptyList advertsCount={adverts.length} />
+        )}
+      </div>
     </Layout>
   );
 }

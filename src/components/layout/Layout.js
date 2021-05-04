@@ -6,7 +6,7 @@ import Footer from './Footer';
 function Layout({ children }) {
   return (
     <>
-      <Header />
+      <Header className="w-full z-50 sticky top-0" />
       <main>{children}</main>
       <Footer />
     </>

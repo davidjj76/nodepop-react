@@ -26,7 +26,7 @@ function ConfirmationButton({ title, confirmation, onConfirm, ...props }) {
         <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-blue-800 bg-opacity-75 origin-center flex justify-center items-center animate-fade-in">
           <div className="bg-white w-11/12 max-w-md text-center pt-10 rounded-sm shadow-lg animate-slide-down">
             <div className="px-4 mb-4">
-              <h2 class="text-3xl font-medium">Wait!</h2>
+              <h2 className="text-3xl font-medium">Wait!</h2>
               <p className="mt-2 w-10/12 max-w-full mx-auto text-gray-800 text-base">
                 {confirmation}
               </p>

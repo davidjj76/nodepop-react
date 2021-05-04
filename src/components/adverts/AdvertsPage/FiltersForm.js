@@ -25,7 +25,6 @@ function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
 
   return (
     <form onSubmit={handleSubmit(onFilter)}>
-      <p>Filters</p>
       <InputText
         name="name"
         label="Name"

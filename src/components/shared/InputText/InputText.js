@@ -1,4 +1,5 @@
 import T from 'prop-types';
+import classNames from 'classnames';
 
 const inputClassName =
   'w-full border border-gray-300 rounded-sm px-4 py-3 outline-none transition-colors duration-150 ease-in-out focus:border-blue-400';
@@ -11,7 +12,7 @@ const TYPES = {
 
 function InputText({ className, type, label, ...props }) {
   return (
-    <div className={className}>
+    <div className={classNames('my-6', className)}>
       <label className="text-sm text-gray-600">{label}</label>
       <div>
         <input type={type} className={inputClassName} {...props} />

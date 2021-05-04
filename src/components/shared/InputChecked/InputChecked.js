@@ -1,5 +1,5 @@
 import T from 'prop-types';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 const inputClassName =
   'appearance-none w-6 h-6 border border-gray-300 outline-none cursor-pointer checked:bg-blue-400';
@@ -16,11 +16,11 @@ const typeClassName = {
 
 function InputChecked({ className, type, label, ...props }) {
   return (
-    <div className={classnames('my-6', className)}>
+    <div className={classNames('my-6', className)}>
       <div className="flex items-center">
         <input
           type={type}
-          className={classnames(inputClassName, typeClassName[type], {})}
+          className={classNames(inputClassName, typeClassName[type], {})}
           {...props}
         />
         <label className="ml-2 text-sm">{label}</label>
