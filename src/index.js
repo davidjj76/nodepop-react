@@ -19,7 +19,7 @@ const store = configureStore({
 
 ReactDOM.render(
   <React.StrictMode>
-    <Root store={store} history={history} isInitiallyLogged={!!accessToken} />
+    <Root store={store} history={history} />
   </React.StrictMode>,
   document.getElementById('root'),
 );
