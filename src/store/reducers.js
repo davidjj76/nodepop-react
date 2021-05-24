@@ -1,4 +1,9 @@
-import { AUTH_LOGIN_SUCCESS, AUTH_LOGOUT, UI_RESET_ERROR } from './types';
+import {
+  AUTH_LOGIN_SUCCESS,
+  AUTH_LOGOUT,
+  TAGS_LOADED,
+  UI_RESET_ERROR,
+} from './types';
 
 export const initialState = {
   auth: false,
@@ -6,6 +11,7 @@ export const initialState = {
     loaded: false,
     data: [],
   },
+  tags: [],
   ui: {
     loading: false,
     error: null,
@@ -24,6 +30,9 @@ export function auth(state = initialState.auth, action) {
 }
 
 export const adverts = (state = initialState.adverts) => state;
+
+export const tags = (state = initialState.tags, action) =>
+  action.type === TAGS_LOADED ? action.payload : state;
 
 export function ui(state = initialState.ui, action) {
   if (action.error) {

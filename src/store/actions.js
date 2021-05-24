@@ -1,8 +1,10 @@
+import { getAreTagsLoaded } from './selectors';
 import {
   AUTH_LOGIN_REQUEST,
   AUTH_LOGIN_SUCCESS,
   AUTH_LOGIN_FAILURE,
   AUTH_LOGOUT,
+  TAGS_LOADED,
   UI_RESET_ERROR,
 } from './types';
 
@@ -51,6 +53,24 @@ export const logoutAction = () => {
   return async function (dispatch, _getState, { api }) {
     await api.auth.logout();
     dispatch(authLogout());
+  };
+};
+
+export const tagsLoaded = tags => {
+  return {
+    type: TAGS_LOADED,
+    payload: tags,
+  };
+};
+
+export const tagsLoadAction = () => {
+  return async function (dispatch, getState, { api }) {
+    if (getAreTagsLoaded(getState())) {
+      return;
+    }
+    const tags = await api.adverts.getTags();
+    dispatch(tagsLoaded(tags));
+    return tags;
   };
 };
 

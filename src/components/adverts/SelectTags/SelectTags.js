@@ -1,16 +1,29 @@
 import React from 'react';
+import T from 'prop-types';
+import { connect } from 'react-redux';
 
-import { getTags } from '../../../api/adverts';
+import { tagsLoadAction } from '../../../store/actions';
+import { getTags } from '../../../store/selectors';
 import { CheckboxGroup } from '../../shared';
 
-function SelectTags(props) {
-  const [tags, setTags] = React.useState([]);
-
+function SelectTags({ onMount, ...props }) {
   React.useEffect(() => {
-    getTags().then(setTags);
-  }, []);
+    onMount();
+  }, [onMount]);
 
-  return <CheckboxGroup options={tags} {...props} />;
+  return <CheckboxGroup {...props} />;
 }
 
-export default SelectTags;
+SelectTags.propTypes = {
+  onMount: T.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  options: getTags(state),
+});
+
+const mapDispatchToProps = {
+  onMount: tagsLoadAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectTags);
