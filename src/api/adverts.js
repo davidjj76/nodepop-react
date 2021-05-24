@@ -13,7 +13,7 @@ export const getTags = () => {
 };
 
 export const getAdverts = () => {
-  return client.get(`${advertsPath}`);
+  return client.get(`${advertsPath}`).then(adverts => adverts.map(mapAdvert));
 };
 
 export const getAdvert = advertId => {
@@ -25,7 +25,7 @@ export const deleteAdvert = advertId => {
 };
 
 export const createAdvert = withFormData(newAdvert => {
-  return client.post(advertsPath, newAdvert);
+  return client.post(advertsPath, newAdvert).then(mapAdvert);
 });
 
 // export const createAdvert = newAdvert => {

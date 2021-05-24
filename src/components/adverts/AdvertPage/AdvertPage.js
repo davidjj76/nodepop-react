@@ -1,24 +1,27 @@
 import React from 'react';
-import { Redirect, useParams, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, useParams } from 'react-router-dom';
 
 import Layout from '../../layout';
 import AdvertDetail from './AdvertDetail';
-import { getAdvert, deleteAdvert } from '../../../api/adverts';
-import usePromise from '../../../hooks/usePromise';
+import { getAdvertDetail, getUi } from '../../../store/selectors';
+import {
+  advertsDeleteAction,
+  advertsDetailAction,
+} from '../../../store/actions';
 
 function AdvertPage() {
   const { advertId } = useParams();
-  const history = useHistory();
-  const { isPending: isLoading, error, execute, data: advert } = usePromise(
-    null
-  );
+  const { loading, error } = useSelector(getUi);
+  const advert = useSelector(state => getAdvertDetail(state, advertId));
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    execute(getAdvert(advertId));
-  }, [advertId]);
+    dispatch(advertsDetailAction(advertId));
+  }, [dispatch, advertId]);
 
   const handleDelete = () => {
-    execute(deleteAdvert(advertId)).then(() => history.push('/'));
+    dispatch(advertsDeleteAction(advertId));
   };
 
   if (error?.statusCode === 401) {

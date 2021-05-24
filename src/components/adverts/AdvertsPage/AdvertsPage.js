@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import Layout from '../../layout';
@@ -6,22 +7,22 @@ import FiltersForm from './FiltersForm';
 import AdvertsList from './AdvertsList';
 import EmptyList from './EmptyList';
 import storage from '../../../utils/storage';
-import { getAdverts } from '../../../api/adverts';
 import { defaultFilters, filterAdverts } from './filters';
-import usePromise from '../../../hooks/usePromise';
+import { getAdverts, getUi } from '../../../store/selectors';
+import { advertsLoadAction } from '../../../store/actions';
 
 const getFilters = () => storage.get('filters') || defaultFilters;
 const saveFilters = filters => storage.set('filters', filters);
 
 function AdvertsPage() {
-  const { isPending: isLoading, error, execute, data: adverts } = usePromise(
-    []
-  );
+  const { loading, error } = useSelector(getUi);
+  const adverts = useSelector(getAdverts);
   const [filters, setFilters] = React.useState(getFilters);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    execute(getAdverts());
-  }, []);
+    dispatch(advertsLoadAction());
+  }, [dispatch]);
 
   React.useEffect(() => {
     saveFilters(filters);

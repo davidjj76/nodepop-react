@@ -1,4 +1,8 @@
 import {
+  ADVERTS_CREATED_SUCCESS,
+  ADVERTS_DELETED_SUCCESS,
+  ADVERTS_DETAIL_SUCCESS,
+  ADVERTS_LOADED_SUCCESS,
   AUTH_LOGIN_SUCCESS,
   AUTH_LOGOUT,
   TAGS_LOADED,
@@ -29,7 +33,22 @@ export function auth(state = initialState.auth, action) {
   }
 }
 
-export const adverts = (state = initialState.adverts) => state;
+export const adverts = (state = initialState.adverts, action) => {
+  switch (action.type) {
+    case ADVERTS_LOADED_SUCCESS:
+      return { ...state, loaded: true, data: action.payload };
+    case ADVERTS_CREATED_SUCCESS:
+    case ADVERTS_DETAIL_SUCCESS:
+      return { ...state, data: [...state.data, action.payload] };
+    case ADVERTS_DELETED_SUCCESS:
+      return {
+        ...state,
+        data: state.data.filter(advert => advert.id !== action.payload),
+      };
+    default:
+      return state;
+  }
+};
 
 export const tags = (state = initialState.tags, action) =>
   action.type === TAGS_LOADED ? action.payload : state;

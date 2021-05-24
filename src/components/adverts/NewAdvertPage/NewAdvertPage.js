@@ -1,19 +1,16 @@
 import React from 'react';
 import T from 'prop-types';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import { createAdvert } from '../../../api/adverts';
-import usePromise from '../../../hooks/usePromise';
+import { advertsCreateAction } from '../../../store/actions';
+import { getUi } from '../../../store/selectors';
 import Layout from '../../layout';
 import NewAdvertForm from './NewAdvertForm';
 
-function NewAdvertPage({ history }) {
-  const { isPending: isLoading, error, execute } = usePromise(null);
-
+function NewAdvertPage({ onNewAdvert, error, loading }) {
   const handleSubmit = newAdvert => {
-    execute(createAdvert(newAdvert)).then(({ id }) =>
-      history.push(`/adverts/${id}`)
-    );
+    onNewAdvert(newAdvert);
   };
 
   if (error?.statusCode === 401) {
@@ -28,9 +25,22 @@ function NewAdvertPage({ history }) {
 }
 
 NewAdvertPage.propTypes = {
-  history: T.shape({
-    push: T.func.isRequired,
-  }).isRequired,
+  onNewAdvert: T.func.isRequired,
+  loading: T.bool,
+  error: T.object,
 };
 
-export default NewAdvertPage;
+NewAdvertPage.defaultProps = {
+  loading: false,
+  error: null,
+};
+
+const mapStateToProps = state => ({
+  ...getUi(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  onNewAdvert: newAdvert => dispatch(advertsCreateAction(newAdvert)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewAdvertPage);
