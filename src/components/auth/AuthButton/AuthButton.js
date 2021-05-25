@@ -6,7 +6,7 @@ import { ConfirmationButton } from '../../shared';
 import { getIsLogged } from '../../../store/selectors';
 import { logoutAction } from '../../../store/actions';
 
-const AuthButton = ({ onLogout, isLogged }) => {
+export const AuthButton = ({ onLogout, isLogged }) => {
   const handleLogoutConfirm = () => {
     onLogout();
   };

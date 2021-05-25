@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdvertDetail should render snapshot 1`] = `
+<div>
+  <p>
+    Coche
+  </p>
+  <p>
+    Sell
+  </p>
+  <p>
+    motor
+  </p>
+  <p>
+    5000
+  </p>
+  <img
+    alt="Coche"
+    height="200"
+    src="placeholder.png"
+    style={
+      Object {
+        "objectFit": "contain",
+      }
+    }
+    width="200"
+  />
+  <ConfirmationButton
+    confirmation="Are you sure?"
+    onConfirm={[MockFunction]}
+  >
+    Delete
+  </ConfirmationButton>
+</div>
+`;

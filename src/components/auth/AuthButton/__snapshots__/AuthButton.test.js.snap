@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthButton should render snapshot when NOT isLogged 1`] = `
+<Link
+  to="/login"
+>
+  Login
+</Link>
+`;
+
+exports[`AuthButton should render snapshot when isLogged 1`] = `
+<ConfirmationButton
+  confirmation="Are you sure?"
+  onConfirm={[Function]}
+>
+  Logout
+</ConfirmationButton>
+`;
