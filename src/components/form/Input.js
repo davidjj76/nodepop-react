@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 
-import { useFormContext } from './Form';
+import { useFormContext } from './context';
 
 function Input({ component: Component, ...props }) {
   const { formValue, handleChange } = useFormContext();

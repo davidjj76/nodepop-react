@@ -1,20 +1,15 @@
 import React from 'react';
 import T from 'prop-types';
 
-import useForm from '../../hooks/useForm';
-
-const formContext = React.createContext();
-
-export const useFormContext = () => React.useContext(formContext);
-
-export const FormConsumer = formContext.Consumer;
+import { FormProvider } from './context';
+import useForm from './useForm';
 
 function Form({ initialValue, onSubmit, ...props }) {
   const { handleSubmit, ...form } = useForm(initialValue);
   return (
-    <formContext.Provider value={form}>
+    <FormProvider {...form}>
       <form onSubmit={handleSubmit(onSubmit)} {...props} />
-    </formContext.Provider>
+    </FormProvider>
   );
 }
 
