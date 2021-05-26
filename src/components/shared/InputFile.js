@@ -2,7 +2,7 @@ import React from 'react';
 
 import placeholder from '../../assets/images/placeholder.png';
 
-function InputFile({ onChange, ...props }) {
+function InputFile({ type, value, onChange, ...props }) {
   const inputRef = React.createRef(null);
   const [src, setSrc] = React.useState(null);
 

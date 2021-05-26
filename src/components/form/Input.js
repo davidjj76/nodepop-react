@@ -16,7 +16,7 @@ function Input({ component: Component, ...props }) {
 }
 
 Input.propTypes = {
-  component: T.oneOfType([T.string, T.func]),
+  component: T.oneOfType([T.string, T.func, T.object]),
   type: T.string,
   name: T.string.isRequired,
 };

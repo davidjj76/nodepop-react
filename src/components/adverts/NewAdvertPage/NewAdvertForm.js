@@ -1,6 +1,6 @@
 import T from 'prop-types';
 
-import useForm from '../../../hooks/useForm';
+import { Form, FormConsumer, Input } from '../../form';
 import { InputFile } from '../../shared';
 import SelectTags from '../SelectTags';
 
@@ -9,32 +9,31 @@ const validPrice = ({ price }) =>
   !Number.isNaN(price) && Number.isFinite(price) && price >= 0;
 const validTags = ({ tags }) => !!tags.length;
 
-function NewAdvertForm({ onSubmit }) {
-  const { formValue: advert, handleChange, handleSubmit, validate } = useForm({
-    name: '',
-    sale: true,
-    price: 0,
-    tags: [],
-    photo: null,
-  });
-  const { name, sale, price, tags } = advert;
-
+function NewAdvertForm(props) {
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input name="name" value={name} onChange={handleChange} />
-      <input
-        type="checkbox"
-        name="sale"
-        checked={sale}
-        onChange={handleChange}
-      />
-      <input type="number" name="price" value={price} onChange={handleChange} />
-      <SelectTags multiple name="tags" value={tags} onChange={handleChange} />
-      <InputFile name="photo" onChange={handleChange} />
-      <button disabled={!validate(validName, validPrice, validTags)}>
-        Save
-      </button>
-    </form>
+    <Form
+      initialValue={{
+        name: '',
+        sale: true,
+        price: 0,
+        tags: [],
+        photo: null,
+      }}
+      {...props}
+    >
+      <Input name="name" />
+      <Input type="checkbox" name="sale" />
+      <Input type="number" name="price" />
+      <Input component={SelectTags} name="tags" />
+      <Input component={InputFile} name="photo" />
+      <FormConsumer>
+        {({ validate }) => (
+          <button disabled={!validate(validName, validPrice, validTags)}>
+            Save
+          </button>
+        )}
+      </FormConsumer>
+    </Form>
   );
 }
 
