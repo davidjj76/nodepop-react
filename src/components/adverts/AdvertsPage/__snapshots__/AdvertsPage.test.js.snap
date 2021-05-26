@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdvertsPage should render snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "getState": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <AdvertsPage>
+        <Layout>
+          <Header>
+            <header>
+              Nodepop React
+              <nav>
+                <ul>
+                  <li>
+                    <NavLink
+                      activeClassName="selected"
+                      isActive={[Function]}
+                      to="/adverts"
+                    >
+                      <Link
+                        aria-current={null}
+                        to={
+                          Object {
+                            "hash": "",
+                            "pathname": "/adverts",
+                            "search": "",
+                            "state": null,
+                          }
+                        }
+                      >
+                        <LinkAnchor
+                          aria-current={null}
+                          href="/adverts"
+                          navigate={[Function]}
+                        >
+                          <a
+                            aria-current={null}
+                            href="/adverts"
+                            onClick={[Function]}
+                          >
+                            Nodepop
+                          </a>
+                        </LinkAnchor>
+                      </Link>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      activeClassName="selected"
+                      isActive={[Function]}
+                      to="/adverts/new"
+                    >
+                      <Link
+                        aria-current={null}
+                        to={
+                          Object {
+                            "hash": "",
+                            "pathname": "/adverts/new",
+                            "search": "",
+                            "state": null,
+                          }
+                        }
+                      >
+                        <LinkAnchor
+                          aria-current={null}
+                          href="/adverts/new"
+                          navigate={[Function]}
+                        >
+                          <a
+                            aria-current={null}
+                            href="/adverts/new"
+                            onClick={[Function]}
+                          >
+                            New advert
+                          </a>
+                        </LinkAnchor>
+                      </Link>
+                    </NavLink>
+                  </li>
+                </ul>
+              </nav>
+              <Connect(AuthButton)>
+                <AuthButton
+                  isLogged={false}
+                  onLogout={[Function]}
+                >
+                  <Link
+                    to="/login"
+                  >
+                    <LinkAnchor
+                      href="/login"
+                      navigate={[Function]}
+                    >
+                      <a
+                        href="/login"
+                        onClick={[Function]}
+                      >
+                        Login
+                      </a>
+                    </LinkAnchor>
+                  </Link>
+                </AuthButton>
+              </Connect(AuthButton)>
+            </header>
+          </Header>
+          <main>
+            <EmptyList
+              advertsCount={0}
+            >
+              <div>
+                <p>
+                  No adverts here!
+                </p>
+                <Link
+                  to="/adverts/new"
+                >
+                  <LinkAnchor
+                    href="/adverts/new"
+                    navigate={[Function]}
+                  >
+                    <a
+                      href="/adverts/new"
+                      onClick={[Function]}
+                    >
+                      Create the first advert
+                    </a>
+                  </LinkAnchor>
+                </Link>
+              </div>
+            </EmptyList>
+          </main>
+          <Footer>
+            <footer>
+              @Keepcoding 2021
+            </footer>
+          </Footer>
+        </Layout>
+      </AdvertsPage>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;
