@@ -1,51 +1,45 @@
 import T from 'prop-types';
 
-import useForm from '../../../hooks/useForm';
+import { Form, Input, FormConsumer } from '../../form';
 import SelectTags from '../SelectTags';
 import { RadioGroup, SelectRange } from '../../shared';
 import { advert } from '../propTypes';
 import { saleFilter } from './filters';
 
 function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
-  const {
-    formValue: filters,
-    setFormValue,
-    handleChange,
-    handleSubmit,
-  } = useForm(initialFilters);
+  const handleResetClick =
+    ({ setFormValue }) =>
+    () => {
+      setFormValue(defaultFilters);
+      onFilter(defaultFilters);
+    };
 
-  const handleResetClick = () => {
-    setFormValue(defaultFilters);
-    onFilter(defaultFilters);
-  };
-
-  const { name, sale, price, tags } = filters;
   const min = Math.min(...prices);
   const max = Math.max(...prices);
 
   return (
-    <form onSubmit={handleSubmit(onFilter)}>
+    <Form initialValue={initialFilters} onSubmit={onFilter}>
       <p>Filters</p>
-      <input name="name" value={name} onChange={handleChange} />
-      <RadioGroup
-        options={Object.values(saleFilter)}
+      <Input type="text" name="name" />
+      <Input
+        component={RadioGroup}
         name="sale"
-        value={sale}
-        onChange={handleChange}
+        options={Object.values(saleFilter)}
       />
-      <SelectRange
+      <Input
+        component={SelectRange}
+        name="price"
         min={min}
         max={max}
-        value={price}
-        name="price"
-        onChange={handleChange}
         style={{ width: 400, margin: 24 }}
         marks={{ [min]: min, [max]: max }}
       />
-      <SelectTags multiple name="tags" value={tags} onChange={handleChange} />
+      <Input component={SelectTags} name="tags" />
       <button type="submit">Filter</button>
-      <button onClick={handleResetClick}>Reset</button>
-    </form>
+      <FormConsumer>
+        {form => <button onClick={handleResetClick(form)}>Reset</button>}
+      </FormConsumer>
+    </Form>
   );
 }
 

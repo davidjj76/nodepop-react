@@ -1,6 +1,6 @@
 import T from 'prop-types';
 
-function RadioGroup({ options, value, ...props }) {
+function RadioGroup({ type, options, value, ...props }) {
   return (
     <div>
       {options.map(({ value: optionValue, label }) => (
@@ -23,7 +23,7 @@ RadioGroup.propTypes = {
     T.shape({
       value: T.string.isRequired,
       label: T.node.isRequired,
-    }).isRequired
+    }).isRequired,
   ).isRequired,
   value: T.string.isRequired,
 };

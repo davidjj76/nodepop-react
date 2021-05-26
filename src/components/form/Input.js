@@ -23,7 +23,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   component: 'input',
-  type: '',
+  type: 'text',
 };
 
 export default Input;
