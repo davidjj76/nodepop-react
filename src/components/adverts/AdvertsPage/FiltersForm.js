@@ -7,12 +7,10 @@ import { advert } from '../propTypes';
 import { saleFilter } from './filters';
 
 function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
-  const handleResetClick =
-    ({ setFormValue }) =>
-    () => {
-      setFormValue(defaultFilters);
-      onFilter(defaultFilters);
-    };
+  const handleResetClick = ({ setFormValue }) => () => {
+    setFormValue(defaultFilters);
+    onFilter(defaultFilters);
+  };
 
   const min = Math.min(...prices);
   const max = Math.max(...prices);
